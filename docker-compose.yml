@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: frontend-container
+    image: docker-react-image
+    build: context:.
+    ports:
+      - '8080:80'

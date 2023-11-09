@@ -1,0 +1,29 @@
+// project import
+import MainCard from 'components/MainCard';
+import { Grid, Stack, Typography } from '@mui/material';
+import FindJobsCard from 'components/cards/findjobscard';
+import { useSelector } from 'store';
+// ==============================|| SAMPLE PAGE ||============================== //
+const Invitations = () => {
+  const invitation = useSelector((state) => state.jobs.expertSavedJobs);
+  return (
+    <Grid item lg={9} xl={10}>
+      <Grid item xs={12} lg={12}>
+        <MainCard>
+          <Typography variant="h2" marginBottom={'1.2rem'} marginTop={'1.5rem'}>
+            Invitations ({invitation.length})
+          </Typography>
+          <Stack spacing={2} sx={{ minHegith: '70vh' }}>
+            {invitation.length !== undefined ? (
+              invitation?.map((item: any) => <FindJobsCard job={item} />)
+            ) : (
+              <Typography>No Search Result</Typography>
+            )}
+          </Stack>
+        </MainCard>
+      </Grid>
+    </Grid>
+  );
+};
+
+export default Invitations;
